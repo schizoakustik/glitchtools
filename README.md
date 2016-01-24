@@ -19,12 +19,16 @@ The KeyframeLister takes a file as an argument. It needs to be an avi file and I
 
 #### JoinerAndMosher
 
+`join_and_mosh file1 file2`
+
 The JoinerAndMosher takes two arguments, both files. (If they're not avi files, it will try to convert them using FFMPEG, so make sure you've got that. (Seems like you should if you're into video glitching.)) The script will then
 * keep the frames up to and including the first keyframe of the first file (so, in most cases just the first but you never know)
 * remove all keyframes from the second file
 * mosh the two files together
 
 #### Framerepeater
+
+`framerepeater file frames_to_keep frame_to_repeat trailing_frames repetitions`
 
 The Framerepeater takes five arguments, the first being the file, and then:
 * the number of frames to keep before repeating
