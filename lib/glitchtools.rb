@@ -142,6 +142,3 @@ module Glitchtools
     end
   end
 end
-
-Dir.chdir("/home/linus/Videos/glitch/lejon_andy/")
-Glitchtools::Framerepeater.new(*%w"lejon_01.avi 6 6 1 15")
