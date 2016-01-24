@@ -2,7 +2,7 @@
 
 Glitchtools being a CLI with some tools to glitch your avi files, heavily based on the [AviGlitch gem](https://github.com/ucnv/aviglitch) and [Streamio FFMPEG](https://github.com/streamio/streamio-ffmpeg).
 
-A frame repeater (`framerepeater`), a JoinerAndMosher (`join_and_mosh`) and a KeyframeLister (`list_keyframes`) are what's available at the moment.
+A frame repeater (`framerepeater`), a JoinerAndMosher (`join_and_mosh`), a KeyframeLister (`list_keyframes`) and a Gif Exporter (`gif_export`) are what's available at the moment.
 
 It should probably be said that the project is mostly for my own pleasure and coding practice. It's not really user friendly right now if you're not me.
 
@@ -18,6 +18,12 @@ Also, streamio-ffmpeg requires [FFMPEG](http://www.ffmpeg.org) so make sure you'
 `list_keyframes file`
 
 The KeyframeLister takes a file as an argument. It needs to be an avi file and I haven't been bothered to put in a converter.
+
+#### Gif Exporter
+
+`gif_export file`
+
+The Gif Exporter takes a video file and exports animated gifs, split into 1 second clips. This is far from optimal and will probably be tweaked in a near future.
 
 #### JoinerAndMosher
 

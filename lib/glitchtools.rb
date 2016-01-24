@@ -53,8 +53,6 @@ module Glitchtools
           @outfile = "#{ outpath }"
         end
         o.output "#{ @outfile }.avi"
-        gif = FFMPEG::Movie.new( "#{ @outfile }.avi" )
-        gif.transcode( "#{ @outfile }.gif", "-pix_fmt rgb24 -s hvga" )
       }
       #Progress thread
       t2 = Thread.new{
@@ -69,7 +67,7 @@ module Glitchtools
       } 
       t1.join
       t2.join
-      return puts "\n#{ @outfile }.avi & #{ @outfile }.gif was saved."
+      return puts "\n#{ @outfile }.avi was saved."
     end
   end
 
@@ -109,18 +107,16 @@ module Glitchtools
         # Keep frames up until last_buffer_frame
         f = file.frames[0, last_buffer_frame].to_avi.frames.concat( file.frames[d[frame_to_repeat], trailing_frames] * repetitions )
         # Add the rest of the frames to y and stick it to the end of q
-        y = file.frames[d[last_buffer_frame + 1], last_frame - last_buffer_frame - 1]
+        y = file.frames[d[last_buffer_frame + repetitions], last_frame - last_buffer_frame - 1]
         y = AviGlitch.open( y )
         y.remove_all_keyframes!
         f.concat( y.frames )
         # New AviGlitch instance with the glitched file
-        o = AviGlitch.open(f)
+        o = AviGlitch.open( f )
         # Save glitched file
         @outfile = "#{ filename }_0-#{ last_buffer_frame }_#{ frame_to_repeat }-#{ trailing_frames }x#{ repetitions }"
         o.output "#{ @outfile }.avi"
-        gif = FFMPEG::Movie.new("#{ @outfile }.avi")
-        gif.transcode( "#{ @outfile }.gif", "-pix_fmt rgb24 -s hvga" )
-      }
+        }
       #Progress thread
       t2 = Thread.new{
         progress = '|* plz wait, repeating frames'
@@ -138,7 +134,22 @@ module Glitchtools
       }
       t1.join
       t2.join
-      return puts "#{ @outfile }.avi & #{ @outfile }.gif was saved."
+      return puts "\n#{ @outfile }.avi was saved."
     end
   end
+
+  class GifExporter
+    def initialize file
+      export_gif file
+    end
+
+    def export_gif file
+      fn = File.basename(file, '.*')
+      f = Movie.new(file)
+      f.duration.round.times do |i|
+        f.transcode("#{ fn }0#{ i + 1 }.gif", "-ss #{ i } -t #{ i + 1 } -pix_fmt rgb24 -s hvga")
+      end
+    end
+  end
+
 end
