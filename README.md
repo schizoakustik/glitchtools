@@ -2,7 +2,7 @@
 
 Glitchtools being a CLI with some tools to glitch your avi files, heavily based on the [AviGlitch gem](https://github.com/ucnv/aviglitch) and [Streamio FFMPEG](https://github.com/streamio/streamio-ffmpeg).
 
-A frame repeater (`./framerepeater`), a JoinerAndMosher (`./join_and_mosh`) and a KeyframeLister (`./list_keyframes`) are what's available at the moment.
+A frame repeater (`framerepeater`), a JoinerAndMosher (`join_and_mosh`) and a KeyframeLister (`list_keyframes`) are what's available at the moment.
 
 It should probably be said that the project is mostly for my own pleasure and coding practice. It's not really user friendly right now if you're not me.
 
