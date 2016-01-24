@@ -23,7 +23,7 @@ The KeyframeLister takes a file as an argument. It needs to be an avi file and I
 
 `gif_export file`
 
-The Gif Exporter takes a video file and exports animated gifs, split into 1 second clips. This is far from optimal and will probably be tweaked in a near future.
+The Gif Exporter takes a video file and exports animated gifs, split into 1 second clips to make them smaller and to-tumblr-uploadable. This solution is far from optimal and will probably be tweaked in a near future.
 
 #### JoinerAndMosher
 
