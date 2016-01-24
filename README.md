@@ -1,38 +1,33 @@
 # Glitchtools
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/glitchtools`. To experiment with that code, run `bin/console` for an interactive prompt.
+Glitchtools being a CLI with some tools to glitch your avi files, heavily based on the AviGlitch gem (https://github.com/ucnv/aviglitch). A frame repeater (./framerepeater), a JoinerAndMosher (./join_and_mosh)
+and a KeyframeLister (./list_keyframes) are what's available at the moment.
 
-TODO: Delete this and the text above, and describe your gem
+It should probably be said that the project is mostly for my own pleasure and coding practice. It's not really user friendly right now if you're not me.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'glitchtools'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install glitchtools
+Clone repository, go to glitchtools directory and run "rake install" should do the trick.
 
 ## Usage
 
-TODO: Write usage instructions here
+The KeyframeLister takes a file as an argument. It needs to be an avi file and I haven't been bothered to put in a converter.
+
+The JoinerAndMosher takes two arguments, both files. If they're not avi files, it will try to convert them using FFMPEG, so make sure you've got that. (Seems like you should if you're into video glitching.)
+
+The Framerepeater takes five arguments, the first being the file, and then:
+* the number of frames to keep before repeating
+* the frame to repeat
+* the number of additional frames to repeat
+* the number of repetitions to make
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+This is something of a mess at the moment and I'm really not counting on anyone jumping in. Do get in thouch if I'm wrong.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/glitchtools.
+Bug reports and pull requests are welcome on GitHub at https://github.com/schizoakustik/glitchtools.
 
 
 ## License
