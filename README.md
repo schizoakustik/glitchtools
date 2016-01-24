@@ -1,13 +1,14 @@
 # Glitchtools
 
-Glitchtools being a CLI with some tools to glitch your avi files, heavily based on the AviGlitch gem (https://github.com/ucnv/aviglitch). A frame repeater (`./framerepeater`), a JoinerAndMosher (`./join_and_mosh`)
-and a KeyframeLister (`./list_keyframes`) are what's available at the moment.
+Glitchtools being a CLI with some tools to glitch your avi files, heavily based on the AviGlitch gem (https://github.com/ucnv/aviglitch) and Streamio FFMPEG (https://github.com/streamio/streamio-ffmpeg).
+A frame repeater (`./framerepeater`), a JoinerAndMosher (`./join_and_mosh`) and a KeyframeLister (`./list_keyframes`) are what's available at the moment.
 
 It should probably be said that the project is mostly for my own pleasure and coding practice. It's not really user friendly right now if you're not me.
 
 ## Installation
 
 Clone repository, go to glitchtools directory and run `rake install` should do the trick.
+Also, streamio-ffmpeg requires [FFMPEG](http://www.ffmpeg.org) so make sure you've got that.
 
 ## Usage
 
@@ -21,7 +22,7 @@ The KeyframeLister takes a file as an argument. It needs to be an avi file and I
 
 `join_and_mosh file1 file2`
 
-The JoinerAndMosher takes two arguments, both files. (If they're not avi files, it will try to convert them using FFMPEG, so make sure you've got that. (Seems like you should if you're into video glitching.)) The script will then
+The JoinerAndMosher takes two arguments, both files. (If they're not avi files, it will try to convert them.) The script will then
 * keep the frames up to and including the first keyframe of the first file (so, in most cases just the first but you never know)
 * remove all keyframes from the second file
 * mosh the two files together
