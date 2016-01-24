@@ -12,6 +12,10 @@ Clone repository, go to glitchtools directory and run `rake install` should do t
 ## Usage
 
 #### KeyframeLister
+```ruby
+
+list_keyframes file
+```
 
 The KeyframeLister takes a file as an argument. It needs to be an avi file and I haven't been bothered to put in a converter.
 
