@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'glitchtools'
-Glitchtools::JoinerAndMosher.new(*ARGV)
+Glitchtools::JoinerAndMosher.new( *ARGV )

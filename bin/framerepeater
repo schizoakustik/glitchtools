@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'glitchtools'
-Glitchtools::Framerepeater.new(*ARGV)
+Glitchtools::Framerepeater.new( *ARGV )

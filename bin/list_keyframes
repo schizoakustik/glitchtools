@@ -1,4 +1,3 @@
 #!/usr/bin/env ruby
 require 'glitchtools'
-k = Glitchtools::KeyframeLister.new
-k.list_keyframes (ARGV[0])
+Glitchtools::KeyframeLister.new.list_keyframes( ARGV[0] )
