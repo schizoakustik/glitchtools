@@ -56,7 +56,7 @@ module Glitchtools
       }
       #Progress thread
       t2 = Thread.new{
-        progress = '|* plz wait, joining & moshing'
+        progress = 'plz wait, joining & moshing...'
         while t1.status
           progress << "."
           print "\r"
@@ -119,7 +119,7 @@ module Glitchtools
         }
       #Progress thread
       t2 = Thread.new{
-        progress = '|* plz wait, repeating frames'
+        progress = 'plz wait, repeating frames...'
         while t1.status
           progress << "."
           # move the cursor to the beginning of the line with \r
@@ -144,10 +144,13 @@ module Glitchtools
     end
 
     def export_gif file
+      unless Dir.exists?( "gif" )
+        Dir.mkdir( "gif" )
+      end
       fn = File.basename(file, '.*')
       f = Movie.new(file)
       f.duration.round.times do |i|
-        f.transcode("#{ fn }0#{ i + 1 }.gif", "-ss #{ i } -t #{ i + 1 } -pix_fmt rgb24 -s hvga")
+        f.transcode("gif/#{ fn }_0#{ i + 1 }.gif", "-ss #{ i } -t #{ i + 1 } -pix_fmt rgb24 -s hvga")
       end
     end
   end
