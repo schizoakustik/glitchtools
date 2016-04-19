@@ -46,7 +46,7 @@ The Framerepeater takes five arguments, the first being the file, and then:
 
 ## Development
 
-This is something of a mess at the moment and I'm really not counting on anyone jumping in. Do get in thouch if I'm wrong.
+This is something of a mess at the moment and I'm really not counting on anyone jumping in. Do get in touch if I'm wrong.
 
 ## Contributing
 
