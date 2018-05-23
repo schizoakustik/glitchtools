@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{"Various tools for glitching avi files."}
   spec.description   = %q{"Various tools for glitching avi files, based on AviGlitch gem and streamio-ffmpeg."}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/schizoakustik/glitchtools"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
