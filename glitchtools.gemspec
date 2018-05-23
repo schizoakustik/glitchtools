@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "bin"
-  spec.executables   = ["join_and_mosh", "framerepeater", "list_keyframes", "gif_export"]
+  spec.executables   = ["join_and_mosh", "framerepeater", "list_keyframes", "gif_export", "randomrepeater"]
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.11"

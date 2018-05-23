@@ -2,13 +2,13 @@
 
 Glitchtools being a CLI with some tools to glitch your avi files, heavily based on the [AviGlitch gem](https://github.com/ucnv/aviglitch) and [Streamio FFMPEG](https://github.com/streamio/streamio-ffmpeg).
 
-A frame repeater (`framerepeater`), a JoinerAndMosher (`join_and_mosh`), a KeyframeLister (`list_keyframes`) and a Gif Exporter (`gif_export`) are what's available at the moment.
+A Frame Repeater (`framerepeater`), a Random Frame Repeater (`randomrepeater`), a Joiner And Mosher (`join_and_mosh`), a Keyframe Lister (`list_keyframes`) and a Gif Exporter (`gif_export`) are what's available at the moment.
 
 It should probably be said that the project is mostly for my own pleasure and coding practice. It's not really user friendly right now if you're not me.
 
 ## Installation
 
-Clone repository, go to glitchtools directory and run `rake install` should do the trick.
+Cloning the repository, going to glitchtools directory and running `rake install` should do the trick.
 Also, streamio-ffmpeg requires [FFMPEG](http://www.ffmpeg.org) so make sure you've got that.
 
 ## Usage
@@ -17,7 +17,7 @@ Also, streamio-ffmpeg requires [FFMPEG](http://www.ffmpeg.org) so make sure you'
 
 `list_keyframes file`
 
-The KeyframeLister takes a file as an argument. It needs to be an avi file and I haven't been bothered to put in a converter.
+The Keyframe Lister takes a file as an argument. It needs to be an avi file and I haven't been bothered to put in a converter.
 
 #### Gif Exporter
 
@@ -29,7 +29,7 @@ The Gif Exporter takes a video file and exports animated gifs, split into 1 seco
 
 `join_and_mosh file1 file2`
 
-The JoinerAndMosher takes two arguments, both files. (If they're not avi files, it will try to convert them.) The script will then
+The Joiner And Mosher takes two arguments, both files. (If they're not avi files, it will try to convert them.) The script will then
 * keep the frames up to and including the first keyframe of the first file (so, in most cases just the first but you never know)
 * remove all keyframes from the second file
 * mosh the two files together
@@ -38,11 +38,17 @@ The JoinerAndMosher takes two arguments, both files. (If they're not avi files, 
 
 `framerepeater file frames_to_keep frame_to_repeat trailing_frames repetitions`
 
-The Framerepeater takes five arguments, the first being the file, and then:
+The Frame Repeater takes five arguments, the first being the file, and then:
 * the number of frames to keep before repeating
 * the frame to repeat
 * the number of additional frames to repeat
 * the number of repetitions to make
+
+#### Random Frame Repeater
+
+`randomrepeater file` 
+
+The Random Frame Repeater takes one argument, the file on which to perform the Random Frame Repeating. Currently it is hard coded to perform 100 repetitions of taking a random non-keyframe and repeating it somewhere between 1 and 50 times. This one is taken directly from the [short AviGlitch guide](https://ucnv.github.io/aviglitch/).
 
 ## Development
 

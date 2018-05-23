@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'glitchtools'
+Glitchtools::Randomrepeater.new( *ARGV )

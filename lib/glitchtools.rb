@@ -138,6 +138,54 @@ module Glitchtools
     end
   end
 
+  class Randomrepeater
+    def initialize file
+      random_repeat file
+    end
+
+    def random_repeat file
+      # Glitching thread
+      queue = Queue.new
+      t1 = Thread.new {
+        filename = File.basename( file , '.*')
+        a = AviGlitch.open( file )
+        d = []
+        a.frames.each_with_index do | f, i |
+          d.push(i) if f.is_deltaframe?
+        end
+        q = a.frames[0, 5]
+        begin 
+          100.times do | r |
+            x = a.frames[d[rand(d.size)], 1]
+            q.concat(x * rand(50))
+            Thread.current[:r] = r
+          end
+        ensure
+          queue.push(100)
+        end
+        o = AviGlitch.open( q )
+        o.output "#{ filename }_random.avi"
+      }
+      # Progress thread
+      t2 = Thread.new {
+        progress = 'plz wait, randomly repeating frames...'
+        while t1.status
+          # move the cursor to the beginning of the line with \r
+          print "\r"
+          # puts add \n to the end of string, use print instead
+          print progress + " #{t1[:r]} %"
+          # force the output to appear immediately when using print
+          # by default when \n is printed to the standard output, the buffer is flushed.
+          $stdout.flush
+          sleep 1
+        end
+      }
+      t1.join
+      t2.join
+      return puts "\nrandomly repeated frames"
+    end
+  end
+
   class GifExporter
     def initialize file
       export_gif file
