@@ -13,7 +13,7 @@ Also, streamio-ffmpeg requires [FFMPEG](http://www.ffmpeg.org) so make sure you'
 
 ## Usage
 
-#### KeyframeLister
+#### Keyframe Lister
 
 `list_keyframes file`
 
@@ -25,7 +25,7 @@ The Keyframe Lister takes a file as an argument. It needs to be an avi file and 
 
 The Gif Exporter takes a video file and exports animated gifs, split into 1 second clips to make them smaller and to-tumblr-uploadable. This solution is far from optimal and will probably be tweaked in a near future.
 
-#### JoinerAndMosher
+#### Joiner And Mosher
 
 `join_and_mosh file1 file2`
 
@@ -34,11 +34,11 @@ The Joiner And Mosher takes two arguments, both files. (If they're not avi files
 * remove all keyframes from the second file
 * mosh the two files together
 
-#### Framerepeater
+#### Frame Repeater
 
 `framerepeater file frames_to_keep frame_to_repeat trailing_frames repetitions`
 
-The Frame Repeater takes five arguments, the first being the file, and then:
+The Frame Repeater takes five arguments, the first being the file (which it will try to convert if it's not an avi file), and then:
 * the number of frames to keep before repeating
 * the frame to repeat
 * the number of additional frames to repeat
