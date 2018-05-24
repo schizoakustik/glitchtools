@@ -9,11 +9,22 @@ It should probably be said that the project is mostly for my own pleasure and co
 ## Installation
 
 Cloning the repository, going to glitchtools directory and running `rake install` should do the trick.
-Also, streamio-ffmpeg requires [FFMPEG](http://www.ffmpeg.org) so make sure you've got that.
+```
+git clone https://github.com/schizoakustik/glitchtools
+cd glitchtools
+rake install
+```
+Also, streamio-ffmpeg requires [FFMPEG](http://www.ffmpeg.org) so make sure you've got that:
+
+```
+sudo apt install ffmpeg
+``` 
+
+or equivalent.
 
 ## Usage
 
-The main command is simply `glitch`, followed by one of the folloing subcommands. The `-h` flag shows some helpful text, also for the subcommands.
+The main command is simply `glitch`, followed by one of the following subcommands. The `-h` flag shows some helpful text, also for the subcommands.
 
 #### Keyframe Lister
 
