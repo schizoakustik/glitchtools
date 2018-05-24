@@ -1,4 +1,19 @@
 #!/usr/bin/env ruby
 
+require 'escort'
 require 'glitchtools'
-Glitchtools::Randomrepeater.new( *ARGV )
+require 'glitchtools/version'
+Escort::App.create do |app|
+    app.version Glitchtools::VERSION
+    app.summary "A collection of tools to glitch your avi files"
+    app.requires_arguments
+    app.options do |opts|
+        opts.opt :repetitions, "Repetitions", :short => '-r', :long => '--repetitions', :type => :integer, :default => 100 
+        opts.opt :length, "Max length", :short => '-l', :long => '--length', :type => :integer, :default => 50 
+    end
+
+    app.action do |opts, args|
+        Glitchtools::Randomrepeater.new(opts, args).random_repeat
+    end
+end
+

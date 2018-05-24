@@ -1,10 +1,10 @@
 # Glitchtools
 
-Glitchtools being a CLI with some tools to glitch your avi files, heavily based on the [AviGlitch gem](https://github.com/ucnv/aviglitch) and [Streamio FFMPEG](https://github.com/streamio/streamio-ffmpeg).
+Glitchtools being a CLI with some tools to glitch your avi files, heavily based on the [AviGlitch gem](https://github.com/ucnv/aviglitch) and [Streamio FFMPEG](https://github.com/streamio/streamio-ffmpeg). Also, the excellent albeit tricky-to-google [Escort](https://github.com/skorks/escort) gem is getting some excercise here.
 
 A Frame Repeater (`framerepeater`), a Random Frame Repeater (`randomrepeater`), a Joiner And Mosher (`join_and_mosh`), a Keyframe Lister (`list_keyframes`) and a Gif Exporter (`gif_export`) are what's available at the moment.
 
-It should probably be said that the project is mostly for my own pleasure and coding practice. It's not really user friendly right now if you're not me.
+It should probably be said that the project is mostly for my own pleasure and coding practice. It's not really user friendly right now if the user is someone else than me.
 
 ## Installation
 
@@ -13,11 +13,13 @@ Also, streamio-ffmpeg requires [FFMPEG](http://www.ffmpeg.org) so make sure you'
 
 ## Usage
 
+The main command is simply `glitch`, followed by one of the folloing subcommands. The `-h` flag shows some helpful text, also for the subcommands.
+
 #### Keyframe Lister
 
 `list_keyframes file`
 
-The Keyframe Lister takes a file as an argument. It needs to be an avi file and I haven't been bothered to put in a converter.
+The Keyframe Lister takes a file as an argument and spits out where the keyframes are.
 
 #### Gif Exporter
 
@@ -36,9 +38,9 @@ The Joiner And Mosher takes two arguments, both files. (If they're not avi files
 
 #### Frame Repeater
 
-`framerepeater file frames_to_keep frame_to_repeat trailing_frames repetitions`
+`framerepeater file --last_buffer_frame --frame_to_repeat --trailing_frames --repetitions`
 
-The Frame Repeater takes five arguments, the first being the file (which it will try to convert if it's not an avi file), and then:
+The Frame Repeater takes an argument, the file (which it will try to convert if it's not an avi file), and then four (4) options:
 * the number of frames to keep before repeating
 * the frame to repeat
 * the number of additional frames to repeat
@@ -46,9 +48,13 @@ The Frame Repeater takes five arguments, the first being the file (which it will
 
 #### Random Frame Repeater
 
-`randomrepeater file` 
+`randomrepeater file --repetitions --length` 
 
-The Random Frame Repeater takes one argument, the file on which to perform the Random Frame Repeating. Currently it is hard coded to perform 100 repetitions of taking a random non-keyframe and repeating it somewhere between 1 and 50 times. This one is taken directly from the [short AviGlitch guide](https://ucnv.github.io/aviglitch/).
+The Random Frame Repeater takes one argument, the file on which to perform the Random Frame Repeating, and two options:
+* the number of times this will go on
+* the maximum number of times the random frame is to be repeated
+
+This one is taken more or less directly from the [short AviGlitch guide](https://ucnv.github.io/aviglitch/).
 
 ## Development
 

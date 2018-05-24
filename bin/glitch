@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+
+require 'escort'
+require 'glitchtools'
+require 'glitchtools/version'
+Escort::App.create do |app|
+  app.version Glitchtools::VERSION
+  app.summary "a collection of tools to glitch your avi files"
+
+  # Keyframe lister
+  app.command :list_keyframes, :aliases => [:l] do |command|
+    command.requires_arguments
+    command.summary "list keyframes in file"
+    command.action do |opts, args|
+      Glitchtools::KeyframeLister.new(opts, args).list_keyframes
+    end
+  end
+
+  # Gif exporter
+  app.command :export_gif, :aliases => [:gif] do |command|
+    command.requires_arguments
+    command.summary "export file to 1 second long gifs"
+    command.action do |opts, args|
+      Glitchtools::GifExporter.new(opts, args).export_gif
+    end
+  end
+
+  # Joiner and mosher
+  app.command :join_and_mosh, :aliases => [:j] do |command|
+    command.requires_arguments
+    command.summary "takes two files, removes the keyframes from the second and appends it to the first. tries to convert the files to avi if they're not that way already."
+    command.action do |opts, args|
+      Glitchtools::JoinerAndMosher.new(opts, args).join_and_mosh
+    end
+  end
+
+  # Frame repeater
+  app.command :framerepeater, :aliases => [:f] do |command|
+    command.requires_arguments
+    command.summary "keeps a chosen number of frames, then takes a chosen frame, followed by a chosen number of frames, and repeats them a chosen number of times. lots of choices!"
+    command.options do |opts|
+      opts.opt :last_buffer_frame, "last buffer frame", :short => "-l", :long => "--last_buffer_frame", :type => :integer
+      opts.opt :frame_to_repeat, "frame to repeat", :short => "-f", :long => "--frame_to_repeat", :type => :integer
+      opts.opt :trailing_frames, "trailing frames", :short => "-t", :long => "--trailing_frames", :type => :integer
+      opts.opt :repetitions, "number of repetitions", :short => "-r", :long => "--repetitions", :type => :integer
+    end
+    command.action do |opts, args|
+      Glitchtools::Framerepeater.new(opts, args).repeat_frames
+    end
+  end
+
+  # Random frame repeater
+  app.command :randomrepeater, :aliases => [:r] do |command|
+    command.requires_arguments
+    command.summary "randomly repeat frames"
+    command.options do |opts|
+      opts.opt :repetitions, "number of repetitions", :short => '-r', :long => '--repetitions', :type => :integer, :default => 100 
+      opts.opt :length, "max length", :short => '-l', :long => '--length', :type => :integer, :default => 50 
+    end
+
+    command.action do |opts, args|
+      Glitchtools::Randomrepeater.new(opts, args).random_repeat
+    end
+  end
+end
+
