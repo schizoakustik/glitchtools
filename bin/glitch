@@ -62,5 +62,13 @@ Escort::App.create do |app|
       Glitchtools::Randomrepeater.new(opts, args).random_repeat
     end
   end
+
+  app.command :reverse, :aliases => [:rev] do |command|
+    command.requires_arguments
+    command.summary 'reverses the file'
+    command.action do |opts, args|
+      Glitchtools::Reverser.new(opts, args).reverse
+    end
+  end
 end
 

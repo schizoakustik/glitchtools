@@ -23,7 +23,7 @@ module Glitchtools
   class KeyframeLister < ::Escort::ActionCommand::Base
     def list_keyframes
       file = AviGlitch.open( arguments[0] )
-      frame_types = []
+      # frame_types = []
       file.frames.each_with_index { |frame, i| puts "#{ i } is keyframe" if frame.is_iframe? }
     end
   end
@@ -205,6 +205,21 @@ module Glitchtools
         options = %W(-ss #{i} -t #{i + 1} -pix_fmt rgb24 -s hvga)
         m.transcode("gif/#{ fn }_0#{ i + 1 }.gif", options)
       end
+    end
+  end
+  
+  class Reverser < ::Escort::ActionCommand::Base
+    def reverse
+      file = arguments[0]
+      fn = File.basename(file, '.*')
+      a = AviGlitch.open file
+      ar = a.frames.reverse_each
+      ar.each_with_index do |f, i|
+        if a.frames[i].is_deltaframe?
+          a.frames[i] = f
+        end
+      end
+      a.output "#{fn}-rev.avi"
     end
   end
 end
